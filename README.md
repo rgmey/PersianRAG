@@ -48,6 +48,4 @@ The `src/` folder contains two retrieval implementations: `RAG.py` (a custom FAI
 - Single-turn retrieval per question; no conversation-aware query rewriting for follow-up questions
 - No automated tests
 
-## License
-
-[MIT / Apache 2.0 / etc.]
+# 
