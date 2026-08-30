@@ -1,0 +1,32 @@
+# MODEL_NAME = "openrouter/horizon-beta",
+# MODEL_NAME = "deepseek/deepseek-r1-0528:free" # real deepseek
+
+# MODEL_NAME = "cognitivecomputations/dolphin-mistral-24b-venice-edition:free",
+# MODEL_NAME = "google/gemma-3n-e2b-it:free",
+# MODEL_NAME = "meta-llama/llama-3.2-3b-instruct",
+# MODEL_NAME = "google/gemma-2-9b-it",
+# MODEL_NAME = "mistralai/mistral-7b-instruct:free"  # or your desired model
+# MODEL_NAME ="deepseek/deepseek-chat-v3-0324:free" # openai
+# MODEL_NAME = "deepseek/deepseek-r1-0528:free" # real deepseek
+# MODEL_NAME = "qwen/qwen3-235b-a22b-2507:free"
+# MODEL_NAME = "tngtech/deepseek-r1t2-chimera:free" # openai
+# MODEL_NAME = "qwen/qwen3-coder:free"
+# MODEL_NAME = "moonshotai/kimi-k2:free" 
+# MODEL_NAME = "mistralai/mistral-nemo:free"
+# MODEL_NAME = "meta-llama/llama-3.2-11b-vision-instruct:free"
+# MODEL_NAME = "google/gemini-2.0-flash-exp:free"
+# MODEL_NAME = "cognitivecomputations/dolphin3.0-mistral-24b:free "
+# MODEL_NAME = "openai/gpt-oss-20b"
+# MODEL_NAME = "openai/gpt-oss-120b"
+# MODEL_NAME = "openai/gpt-5-nano"
+
+
+# MODEL = "mistralai/mistral-7b-instruct:free"  # or your desired model
+# MODEL="deepseek/deepseek-chat-v3-0324:free" # openai
+# MODEL = "deepseek/deepseek-r1-0528:free" # real deepseek
+# MODEL = "deepseek/deepseek-r1:free"
+# MODEL = "qwen/qwen3-235b-a22b-2507:free"
+# MODEL = "tngtech/deepseek-r1t2-chimera:free" # openai
+# MODEL = "qwen/qwen3-coder:free"
+# MODEL = "moonshotai/kimi-k2:free" 
+# MODEL = "google/gemini-2.0-flash-exp:free"

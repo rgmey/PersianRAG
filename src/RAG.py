@@ -20,11 +20,13 @@ from hazm import Normalizer, sent_tokenize
 
 
 class LLM:
+    @timer
     def __init__(self) -> None:
         self.model_name = os.getenv('MODEL_NAME')
         self.base_url = os.getenv('BASE_URL')
         self.api_key = os.getenv('API_KEY')
 
+    @timer
     def _log(self, prompt, output):
         datetime_now = datetime.now().strftime("%Y%m%d")
         log_path = '../logs'
@@ -43,6 +45,7 @@ class LLM:
         pdf_file = PDF(f'../pdfs/{datetime_now}_{datetime.now().strftime("%H%M%S")}.pdf')
         pdf_file.save_persian_pdf(self.model_name, prompt, output)
 
+    @timer
     def _llm_init(self):
         if not self.api_key:
             raise RuntimeError("API_KEY not set")
@@ -179,22 +182,26 @@ class PDFtoFAISS:
 
         # Create FAISS index with ID mapping
         dim = embeddings.shape[1]
-        index = faiss.IndexFlatL2(dim)
-        index = faiss.IndexIDMap(index)
-
+        # index = faiss.IndexFlatL2(dim)
+        # index = faiss.IndexIDMap(index)
+        m = 32
+        base_index = faiss.IndexHNSWFlat(dim, m)
+        base_index.hnsw.efSearch = 40  # higher = better recall, slower
+        base_index.hnsw.efConstruction = 80
+        self.index = faiss.IndexIDMap(base_index)
         # Add vectors with IDs
         ids = np.arange(len(chunks))
-        index.add_with_ids(embeddings, ids)
+        self.index.add_with_ids(embeddings, ids)
 
         # Store mapping
         self.id2text = {i: chunk for i, chunk in enumerate(chunks)}
 
         # Save index
-        faiss.write_index(index, index_path)
-        self.index = index
+        faiss.write_index(self.index, index_path)
 
         print(f"FAISS index saved to {index_path} with {len(chunks)} chunks.")
 
+    @timer
     def load_index(self, index_path='faiss_index.index'):
         """Load FAISS index. In case we want to implement caching later."""
         self.index = faiss.read_index(index_path)

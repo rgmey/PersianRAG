@@ -7,6 +7,7 @@ import streamlit as st
 from dotenv import load_dotenv
 load_dotenv()
 
+@timer
 def display_messages():
     """Display the chat history."""
     st.subheader("Chat History")
@@ -14,6 +15,7 @@ def display_messages():
         message(msg, is_user=is_user, key=str(i))
     st.session_state["thinking_spinner"] = st.empty()
 
+@timer
 def process_input():
     """Process the user input and generate an assistant response."""
     if st.session_state["user_input"] and len(st.session_state["user_input"].strip()) > 0:
@@ -39,6 +41,7 @@ def process_input():
         st.session_state["messages"].append(('retrieved docs: \n' + retrieved_docs_str, True))
         st.session_state["messages"].append((agent_text, False))
 
+@timer
 def read_and_save_file():
     """Handle file upload and ingestion."""
     st.session_state["assistant"].clear_data()
@@ -60,6 +63,7 @@ def read_and_save_file():
         )
         os.remove(file_path)
 
+@timer
 def page():
     """Main app page layout."""
     # below code made the Message section shaking...
