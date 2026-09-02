@@ -11,6 +11,7 @@ Questions.txt
 *.pdf
 *.ttf
 node_module/
+.venv/
 docs/
 *.pkl
 faiss_index
