@@ -36,16 +36,3 @@ streamlit run app.py
 ```
 
 Upload a PDF in the sidebar, adjust the number of retrieved chunks (k) with the slider, and ask questions in the chat box.
-
-## Project Structure Note
-
-The `src/` folder contains two retrieval implementations: `RAG.py` (a custom FAISS pipeline, used by the live `app.py` Streamlit app) and `retrieve.py` / `generate.py` / `run.py` (an earlier, LangChain-based exploration with hardcoded sample Persian text, not currently wired into the app). If you're presenting this repo, it's worth either removing the unused exploration files or noting clearly which path is the working entry point, currently a reader has to inspect imports to figure out that `app.py` is the one that runs.
-
-## Limitations / Future Work
-
-- Retrieval is dense-only (FAISS vector search); no keyword/hybrid retrieval, unlike the author's RAG-service project
-- No retrieval evaluation harness (Hit@k, MRR, etc.) currently implemented for this project
-- Single-turn retrieval per question; no conversation-aware query rewriting for follow-up questions
-- No automated tests
-
-# 
